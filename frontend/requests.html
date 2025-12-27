@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Requests - GearGuard Admin</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">⚙️ GearGuard</h1>
+                <p class="tagline">Maintenance Management</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="equipment.html" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span class="nav-text">Equipment</span>
+                </a>
+                <a href="teams.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Teams</span>
+                </a>
+                <a href="technicians.html" class="nav-item">
+                    <span class="nav-icon">👨‍🔧</span>
+                    <span class="nav-text">Technicians</span>
+                </a>
+                <a href="requests.html" class="nav-item active">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Requests</span>
+                </a>
+                <a href="preventive.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Preventive</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div>
+                    <h1 class="page-title">Maintenance Requests</h1>
+                    <p class="page-subtitle">Manage corrective and preventive maintenance requests</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddRequestModal()">+ New Request</button>
+                </div>
+            </header>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <input type="text" id="searchInput" class="filter-input" placeholder="🔍 Search requests...">
+                <select id="statusFilter" class="filter-select">
+                    <option value="">All Status</option>
+                    <option value="new">New</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="repaired">Repaired</option>
+                    <option value="scrap">Scrap</option>
+                </select>
+                <select id="typeFilter" class="filter-select">
+                    <option value="">All Types</option>
+                    <option value="corrective">Corrective</option>
+                    <option value="preventive">Preventive</option>
+                </select>
+                <select id="priorityFilter" class="filter-select">
+                    <option value="">All Priority</option>
+                    <option value="critical">Critical</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+
+            <!-- Requests Table -->
+            <div class="card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Equipment</th>
+                                <th>Type</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Assigned Team</th>
+                                <th>Assigned Technician</th>
+                                <th>Description</th>
+                                <th>Requested Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requestsTableBody">
+                            <tr>
+                                <td colspan="8" class="text-center">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Request Modal -->
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">New Maintenance Request</h2>
+                <button class="modal-close" onclick="closeRequestModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="requestForm">
+                    <input type="hidden" id="requestId">
+                    <div class="form-group">
+                        <label for="requestEquipment">Equipment *</label>
+                        <select id="requestEquipment" required>
+                            <option value="">Select Equipment</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="requestType">Type *</label>
+                            <select id="requestType" required>
+                                <option value="corrective">Corrective</option>
+                                <option value="preventive">Preventive</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="requestPriority">Priority *</label>
+                            <select id="requestPriority" required>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="requestAssignedTeam">Assign Team</label>
+                            <select id="requestAssignedTeam">
+                                <option value="">Auto (based on equipment)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="requestAssignedTechnician">Assign Technician</label>
+                            <select id="requestAssignedTechnician">
+                                <option value="">Unassigned</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestStatus">Status *</label>
+                        <select id="requestStatus" required>
+                            <option value="new">New</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="repaired">Repaired</option>
+                            <option value="scrap">Scrap</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestDescription">Description *</label>
+                        <textarea id="requestDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestNotes">Notes</label>
+                        <textarea id="requestNotes" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeRequestModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/requests.js"></script>
+</body>
+</html>

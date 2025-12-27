@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment - GearGuard Admin</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">⚙️ GearGuard</h1>
+                <p class="tagline">Maintenance Management</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="equipment.html" class="nav-item active">
+                    <span class="nav-icon">🔧</span>
+                    <span class="nav-text">Equipment</span>
+                </a>
+                <a href="teams.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Teams</span>
+                </a>
+                <a href="technicians.html" class="nav-item">
+                    <span class="nav-icon">👨‍🔧</span>
+                    <span class="nav-text">Technicians</span>
+                </a>
+                <a href="requests.html" class="nav-item">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Requests</span>
+                </a>
+                <a href="preventive.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Preventive</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div>
+                    <h1 class="page-title">Equipment Management</h1>
+                    <p class="page-subtitle">Manage all equipment and assets</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddEquipmentModal()">+ Add Equipment</button>
+                </div>
+            </header>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <input type="text" id="searchInput" class="filter-input" placeholder="🔍 Search equipment...">
+                <select id="statusFilter" class="filter-select">
+                    <option value="">All Status</option>
+                    <option value="operational">Operational</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="breakdown">Breakdown</option>
+                    <option value="scrap">Scrap</option>
+                </select>
+            </div>
+
+            <!-- Equipment Table -->
+            <div class="card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                                <th>Purchase Date</th>
+                                <th>Open Requests</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="equipmentTableBody">
+                            <tr>
+                                <td colspan="8" class="text-center">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Equipment Modal -->
+    <div id="equipmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Equipment</h2>
+                <button class="modal-close" onclick="closeEquipmentModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="equipmentForm">
+                    <input type="hidden" id="equipmentId">
+                    <div class="form-group">
+                        <label for="equipmentName">Equipment Name *</label>
+                        <input type="text" id="equipmentName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="equipmentType">Type *</label>
+                            <input type="text" id="equipmentType" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="equipmentDepartment">Department *</label>
+                            <input type="text" id="equipmentDepartment" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="equipmentTeam">Assigned Team *</label>
+                            <select id="equipmentTeam" required>
+                                <option value="">Select Team</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="equipmentStatus">Status *</label>
+                            <select id="equipmentStatus" required>
+                                <option value="operational">Operational</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="breakdown">Breakdown</option>
+                                <option value="scrap">Scrap</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="purchaseDate">Purchase Date *</label>
+                        <input type="date" id="purchaseDate" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeEquipmentModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Equipment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/equipment.js"></script>
+</body>
+</html>

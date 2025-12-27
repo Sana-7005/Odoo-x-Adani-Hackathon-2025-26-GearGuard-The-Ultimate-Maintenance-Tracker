@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technicians - GearGuard Admin</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">⚙️ GearGuard</h1>
+                <p class="tagline">Maintenance Management</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="equipment.html" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span class="nav-text">Equipment</span>
+                </a>
+                <a href="teams.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Teams</span>
+                </a>
+                <a href="technicians.html" class="nav-item active">
+                    <span class="nav-icon">👨‍🔧</span>
+                    <span class="nav-text">Technicians</span>
+                </a>
+                <a href="requests.html" class="nav-item">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Requests</span>
+                </a>
+                <a href="preventive.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Preventive</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div>
+                    <h1 class="page-title">Technician Management</h1>
+                    <p class="page-subtitle">Manage maintenance technicians</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddTechnicianModal()">+ Add Technician</button>
+                </div>
+            </header>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <input type="text" id="searchInput" class="filter-input" placeholder="🔍 Search technicians...">
+                <select id="teamFilter" class="filter-select">
+                    <option value="">All Teams</option>
+                </select>
+            </div>
+
+            <!-- Technicians Table -->
+            <div class="card">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Team</th>
+                                <th>Skill Level</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="techniciansTableBody">
+                            <tr>
+                                <td colspan="8" class="text-center">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Technician Modal -->
+    <div id="technicianModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Technician</h2>
+                <button class="modal-close" onclick="closeTechnicianModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="technicianForm">
+                    <input type="hidden" id="technicianId">
+                    <div class="form-group">
+                        <label for="technicianName">Full Name *</label>
+                        <input type="text" id="technicianName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="technicianEmail">Email *</label>
+                            <input type="email" id="technicianEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="technicianPhone">Phone *</label>
+                            <input type="tel" id="technicianPhone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="technicianTeam">Team *</label>
+                            <select id="technicianTeam" required>
+                                <option value="">Select Team</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="technicianSkillLevel">Skill Level *</label>
+                            <select id="technicianSkillLevel" required>
+                                <option value="Junior">Junior</option>
+                                <option value="Mid">Mid</option>
+                                <option value="Senior">Senior</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="technicianStatus">Status *</label>
+                        <select id="technicianStatus" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeTechnicianModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Technician</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/technicians.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preventive Maintenance - GearGuard Admin</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">⚙️ GearGuard</h1>
+                <p class="tagline">Maintenance Management</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="equipment.html" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span class="nav-text">Equipment</span>
+                </a>
+                <a href="teams.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Teams</span>
+                </a>
+                <a href="technicians.html" class="nav-item">
+                    <span class="nav-icon">👨‍🔧</span>
+                    <span class="nav-text">Technicians</span>
+                </a>
+                <a href="requests.html" class="nav-item">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Requests</span>
+                </a>
+                <a href="preventive.html" class="nav-item active">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Preventive</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div>
+                    <h1 class="page-title">Preventive Maintenance</h1>
+                    <p class="page-subtitle">Scheduled maintenance tasks and calendar</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddScheduleModal()">+ New Schedule</button>
+                </div>
+            </header>
+
+            <!-- Stats -->
+            <div class="preventive-stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="totalSchedules">0</div>
+                    <div class="stat-label">Total Schedules</div>
+                </div>
+                <div class="stat-box overdue">
+                    <div class="stat-value" id="overdueCount">0</div>
+                    <div class="stat-label">Overdue</div>
+                </div>
+                <div class="stat-box upcoming">
+                    <div class="stat-value" id="upcomingCount">0</div>
+                    <div class="stat-label">Due This Week</div>
+                </div>
+            </div>
+
+            <!-- Schedules Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Maintenance Schedules</h2>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Equipment</th>
+                                <th>Warranty</th>
+                                <th>Task</th>
+                                <th>Frequency</th>
+                                <th>Last Completed</th>
+                                <th>Next Due</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedulesTableBody">
+                            <tr>
+                                <td colspan="9" class="text-center">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Schedule Modal -->
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">New Preventive Schedule</h2>
+                <button class="modal-close" onclick="closeScheduleModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="scheduleForm">
+                    <input type="hidden" id="scheduleId">
+                    <div class="form-group">
+                        <label for="scheduleEquipment">Equipment *</label>
+                        <select id="scheduleEquipment" required>
+                            <option value="">Select Equipment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="scheduleTask">Task Name *</label>
+                        <input type="text" id="scheduleTask" required placeholder="e.g., Oil change, Filter replacement">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="scheduleFrequency">Frequency *</label>
+                            <select id="scheduleFrequency" required>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="scheduleNextDue">Next Due Date *</label>
+                            <input type="date" id="scheduleNextDue" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="scheduleLastCompleted">Last Completed</label>
+                        <input type="date" id="scheduleLastCompleted">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeScheduleModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Schedule</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/preventive.js"></script>
+</body>
+</html>

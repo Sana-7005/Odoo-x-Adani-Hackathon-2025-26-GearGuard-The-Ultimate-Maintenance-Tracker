@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams - GearGuard Admin</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">⚙️ GearGuard</h1>
+                <p class="tagline">Maintenance Management</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="equipment.html" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span class="nav-text">Equipment</span>
+                </a>
+                <a href="teams.html" class="nav-item active">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Teams</span>
+                </a>
+                <a href="technicians.html" class="nav-item">
+                    <span class="nav-icon">👨‍🔧</span>
+                    <span class="nav-text">Technicians</span>
+                </a>
+                <a href="requests.html" class="nav-item">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Requests</span>
+                </a>
+                <a href="preventive.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Preventive</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div>
+                    <h1 class="page-title">Team Management</h1>
+                    <p class="page-subtitle">Manage maintenance teams</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="showAddTeamModal()">+ Add Team</button>
+                </div>
+            </header>
+
+            <!-- Teams Grid -->
+            <div id="teamsGrid" class="teams-grid"></div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Team Modal -->
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Team</h2>
+                <button class="modal-close" onclick="closeTeamModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="teamForm">
+                    <input type="hidden" id="teamId">
+                    <div class="form-group">
+                        <label for="teamName">Team Name *</label>
+                        <input type="text" id="teamName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="teamDepartment">Department *</label>
+                        <input type="text" id="teamDepartment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="teamSpecialization">Specialization *</label>
+                        <input type="text" id="teamSpecialization" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeTeamModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Team</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/teams.js"></script>
+</body>
+</html>

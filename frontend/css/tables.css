@@ -1,0 +1,223 @@
+/* Table Styles - GearGuard Admin Panel */
+
+.table-container {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.data-table thead {
+    background-color: var(--bg-secondary);
+}
+
+.data-table th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.data-table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.data-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--bg-secondary);
+}
+
+/* Table Actions */
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.action-btn-edit {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.action-btn-edit:hover {
+    background-color: #bfdbfe;
+}
+
+.action-btn-delete {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.action-btn-delete:hover {
+    background-color: #fecaca;
+}
+
+.action-btn-view {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.action-btn-view:hover {
+    background-color: #e5e7eb;
+}
+
+.action-btn-complete {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.action-btn-complete:hover {
+    background-color: #a7f3d0;
+}
+
+/* Teams Grid */
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.team-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.team-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+}
+
+.team-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.team-department {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.team-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.team-info {
+    margin-bottom: var(--spacing-md);
+}
+
+.team-specialization {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    padding: var(--spacing-sm);
+    background-color: var(--bg-secondary);
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.team-stats {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.team-stat {
+    text-align: center;
+}
+
+.team-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.team-stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Preventive Stats */
+.preventive-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.stat-box {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-box.overdue {
+    border-left: 4px solid var(--danger-color);
+}
+
+.stat-box.upcoming {
+    border-left: 4px solid var(--warning-color);
+}
+
+.stat-box .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-box .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive Tables */
+@media (max-width: 768px) {
+    .data-table {
+        font-size: 0.75rem;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 0.5rem;
+    }
+    
+    .teams-grid {
+        grid-template-columns: 1fr;
+    }
+}

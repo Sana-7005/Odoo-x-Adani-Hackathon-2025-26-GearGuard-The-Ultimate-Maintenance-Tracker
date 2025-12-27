@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - GearGuard Admin</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">⚙️ GearGuard</h1>
+                <p class="tagline">Maintenance Management</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="equipment.html" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span class="nav-text">Equipment</span>
+                </a>
+                <a href="teams.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Teams</span>
+                </a>
+                <a href="technicians.html" class="nav-item">
+                    <span class="nav-icon">👨‍🔧</span>
+                    <span class="nav-text">Technicians</span>
+                </a>
+                <a href="requests.html" class="nav-item">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Requests</span>
+                </a>
+                <a href="preventive.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Preventive</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="content-header">
+                <div>
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">System overview and analytics</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outline" onclick="location.reload()">🔄 Refresh</button>
+                </div>
+            </header>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">🔧</div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="totalEquipment">0</h3>
+                        <p class="stat-label">Total Equipment</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">📋</div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="openRequests">0</h3>
+                        <p class="stat-label">Open Requests</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">⏰</div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="overdueSchedules">0</h3>
+                        <p class="stat-label">Overdue Tasks</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">👥</div>
+                    <div class="stat-content">
+                        <h3 class="stat-value" id="activeTechnicians">0</h3>
+                        <p class="stat-label">Active Technicians</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="dashboard-grid">
+                <!-- Equipment Status Chart -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Equipment Status Distribution</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="equipmentStatusChart" class="chart-container"></div>
+                    </div>
+                </div>
+
+                <!-- Team Performance -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Team Performance</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="teamPerformance" class="performance-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts and Upcoming Tasks -->
+            <div class="dashboard-grid">
+                <!-- Critical Alerts -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2 class="card-title">⚠️ Critical Alerts</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="criticalAlerts" class="alerts-list"></div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Preventive Tasks -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2 class="card-title">📅 Upcoming Preventive Tasks</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="upcomingTasks" class="tasks-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h2 class="card-title">Recent Activities</h2>
+                </div>
+                <div class="card-body">
+                    <div id="recentActivities" class="activities-list"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

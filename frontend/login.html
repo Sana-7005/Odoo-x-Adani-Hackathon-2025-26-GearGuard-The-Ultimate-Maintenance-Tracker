@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GearGuard Admin</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <h1>🔧 GearGuard</h1>
+                <p>Admin Panel</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Sign in to continue to your dashboard</p>
+                
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="your.email@gmail.com" 
+                        required
+                    >
+                    <span class="error-text" id="emailError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password" 
+                        required
+                    >
+                    <span class="error-text" id="passwordError"></span>
+                </div>
+                
+                <button type="submit" class="btn-login">
+                    <span class="btn-text">Sign In</span>
+                    <span class="btn-loader" style="display: none;">Loading...</span>
+                </button>
+                
+                <div class="signup-link">
+                    Don't have an account? <a href="signup.html">Sign up here</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="info-section">
+            <h2>Maintenance Management System</h2>
+            <div class="features">
+                <div class="feature">
+                    <span class="icon">📊</span>
+                    <h3>Real-time Dashboard</h3>
+                    <p>Monitor all maintenance activities at a glance</p>
+                </div>
+                <div class="feature">
+                    <span class="icon">🔧</span>
+                    <h3>Equipment Tracking</h3>
+                    <p>Manage and track all equipment efficiently</p>
+                </div>
+                <div class="feature">
+                    <span class="icon">👥</span>
+                    <h3>Team Management</h3>
+                    <p>Organize teams and assign technicians</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/login.js"></script>
+</body>
+</html>
