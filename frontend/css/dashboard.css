@@ -1,0 +1,250 @@
+/* ------------------------------
+   GLOBAL
+------------------------------ */
+body {
+  background: #f5f7fb;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: #111827;
+}
+
+/* Layout wrapper */
+.layout {
+  display: grid;
+  grid-template-columns: 240px auto;
+  min-height: 100vh;
+}
+
+/* ------------------------------
+   SIDEBAR
+------------------------------ */
+.sidebar {
+  background: linear-gradient(180deg, #1f2937, #0f172a);
+  color: white;
+  padding: 24px 18px;
+  box-shadow: 4px 0 20px rgba(0,0,0,.15);
+}
+
+.sidebar h2 {
+  margin-bottom: 18px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #e5e7eb;
+  font-size: 14px;
+  transition: .2s;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,.12);
+}
+
+.sidebar a.active {
+  background: white;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* ------------------------------
+   TOPBAR
+------------------------------ */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 22px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+.topbar h3 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* Bell */
+.notify-bell {
+  position: relative;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.notify-dot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 9px;
+  height: 9px;
+  background: #ef4444;
+  border-radius: 50%;
+}
+
+/* Notification dropdown */
+.notify-box {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  width: 250px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 18px 35px rgba(0,0,0,.15);
+  padding: 10px;
+  display: none;
+}
+
+.notify-box p {
+  margin-bottom: 6px;
+  padding: 9px;
+  font-size: 12px;
+  background: #f9fafb;
+  border-radius: 10px;
+}
+
+/* ------------------------------
+   PAGE CONTAINER
+------------------------------ */
+.page {
+  padding: 22px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.page h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.page p {
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+/* ------------------------------
+   CARDS
+------------------------------ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.06);
+  border: 1px solid #e8ecf3;
+  font-size: 15px;
+  font-weight: 700;
+  transition: .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(0,0,0,.12);
+}
+
+.card::before {
+  content: "";
+  width: 38px;
+  height: 4px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+  display: block;
+  background: linear-gradient(90deg,#60a5fa,#2563eb);
+}
+
+/* ------------------------------
+   TABLE
+------------------------------ */
+table {
+  width: 100%;
+  margin-top: 14px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(0,0,0,.06);
+}
+
+th {
+  padding: 12px;
+  background: #f3f4f6;
+  font-size: 13px;
+  color: #374151;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  font-size: 13px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+tr:hover {
+  background: #f9fafb;
+}
+
+/* ------------------------------
+   STATUS BADGES
+------------------------------ */
+.badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* NEW */
+.badge.new { 
+  background:#fff7d6; 
+  color:#92400e; 
+}
+
+/* ACCEPTED */
+.badge.accepted { 
+  background:#e0edff; 
+  color:#1e40af; 
+}
+
+/* IN PROGRESS */
+.badge.in-progress { 
+  background:#fde68a; 
+  color:#92400e; 
+}
+
+/* COMPLETED */
+.badge.completed,
+.badge.repaired { 
+  background:#d9fbe4; 
+  color:#065f46; 
+}
+
+/* REJECTED */
+.badge.rejected { 
+  background:#fee2e2; 
+  color:#7f1d1d; 
+}
+
+
+@media (max-width: 600px) {
+  .cards { grid-template-columns: 1fr; }
+}

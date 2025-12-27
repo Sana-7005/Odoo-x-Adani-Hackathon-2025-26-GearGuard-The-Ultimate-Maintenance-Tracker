@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Create Request</title>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/create.css">
+</head>
+
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Employee</h2>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a class="active" href="create.html">Create Request</a></li>
+        <li><a href="track.html">My Requests</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <h3>Create Maintenance Request</h3>
+      </header>
+
+      <section class="page">
+        <form>
+          
+          <select id="userEquipment">
+            <option value="">-- Select Equipment --</option>
+
+            <option value="Laptop 01">Laptop 01</option>
+            <option value="Laptop 02">Laptop 02</option>
+            <option value="Desktop PC">Desktop PC</option>
+            <option value="Printer A">Printer A</option>
+            <option value="Generator A">Generator A</option>
+            <option value="Air Conditioner Unit">Air Conditioner Unit</option>
+            <option value="CCTV Camera">CCTV Camera</option>
+            <option value="Server Rack">Server Rack</option>
+
+            <option value="other">Other (not listed)</option>
+          </select>
+
+          <!-- Only shows when “other” selected -->
+          <div id="otherBox" style="display:none; margin-top:8px;">
+            <input id="otherInput" placeholder="Enter equipment name manually">
+          </div>
+
+
+          <label>Assigned Team (auto)</label>
+          <input id="autoTeam" disabled>
+
+          <label>Description</label>
+          <textarea></textarea>
+
+          <label>Upload Photo</label>
+          <input type="file">
+
+          <button class="primary-btn" type="button">
+            Submit Request
+          </button>
+
+        </form>
+        <!-- SUCCESS POPUP -->
+        <div class="success-overlay" id="successPopup">
+          <div class="success-box">
+            <div class="check">✔</div>
+            <h3>Request Submitted</h3>
+            <p>We'll notify you when a technician is assigned.</p>
+
+            <button onclick="closePopup()">OK</button>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/create.js"></script>
+</body>
+
+</html>
