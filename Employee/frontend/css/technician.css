@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f7fb;
+}
+
+/* Page wrapper */
+.tech-wrapper {
+  padding: 28px;
+}
+
+/* Header */
+.header {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+/* Card */
+.tech-card {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 18px 35px rgba(0,0,0,.06);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 12px;
+  font-size: 14px;
+}
+
+th {
+  background: #f3f4f6;
+  text-align: left;
+  color: #374151;
+}
+
+tr:hover {
+  background: #f9fafb;
+}
+
+/* Status badges */
+.badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.badge.new     { background:#fff7d6; color:#92400e; }
+.badge.accepted{ background:#e0edff; color:#1e40af; }
+.badge.progress{ background:#fde68a; color:#92400e; }
+.badge.done    { background:#d9fbe4; color:#065f46; }
+.badge.reject  { background:#fee2e2; color:#7f1d1d; }
+
+/* Buttons */
+button {
+  border: none;
+  padding: 7px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+button:hover {
+  opacity: .8;
+}
+
+.accept { background:#2563eb; color:white; }
+.reject { background:#ef4444; color:white; }
+.start  { background:#facc15; color:#374151; }
+.done   { background:#22c55e; color:white; }
+.tech-filters{
+  display:flex;
+  gap:10px;
+  margin-bottom:10px;
+  justify-content: flex-end;   /* <-- pushes it to the right */
+}
+
+
+.tech-filters input,
+.tech-filters select{
+  padding:8px 12px;
+  border-radius:10px;
+  border:1px solid #d1d5db;
+}
+.tech-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+.clear-btn{
+  background:#ef4444;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.clear-btn:hover{
+  background:#dc2626;
+}
+.tech-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.tech-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.tech-filters{
+  display:flex;
+  gap:10px;
+}
+
+.clear-btn{
+  background:#ef4444;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.clear-btn:hover{
+  background:#dc2626;
+}

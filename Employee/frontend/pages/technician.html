@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Technician Panel</title>
+
+  <link rel="stylesheet" href="../css/technician.css">
+</head>
+
+<body>
+
+  <div class="tech-wrapper">
+
+    <!-- HEADER -->
+    <div class="header">Technician Panel</div>
+
+
+    <!-- CARD -->
+    <div class="tech-card">
+
+      <!-- TOP BAR -->
+      <div class="tech-top">
+
+        <div>
+          <h4>Your Assigned Jobs</h4>
+        </div>
+
+        <div class="tech-actions">
+
+          <!-- FILTERS -->
+          <div class="tech-filters">
+
+            <input id="searchBox" placeholder="Search equipment or description">
+
+            <select id="statusFilter">
+              <option value="all">All</option>
+              <option value="New">New</option>
+              <option value="Accepted">Accepted</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+
+          </div>
+
+          <!-- CLEAR COMPLETED -->
+          <button id="clearCompletedBtn" class="clear-btn">
+            Clear Completed
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- TABLE -->
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Equipment</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="techTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+
+  <!-- SCRIPT -->
+  <script src="../js/technician.js"></script>
+
+</body>
+
+</html>
